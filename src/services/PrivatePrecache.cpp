@@ -64,7 +64,7 @@ void PrivatePrecache::AmxxPluginsLoadedHandler()
     ClearPrivatePrecache();
 }
 
-void PrivatePrecache::TrySendPrivateResourceListLocation(int client)
+void PrivatePrecache::TrySendPrivateResourceListLocation(ClientId client)
 {
     if (!is_resource_list_written_)
     {

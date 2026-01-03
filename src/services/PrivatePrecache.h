@@ -34,7 +34,7 @@ private:
 	void ClientConnectingHandler(ClientConnectingEvent event);
 	void AmxxPluginsLoadedHandler();
 
-	void TrySendPrivateResourceListLocation(int client);
+	void TrySendPrivateResourceListLocation(ClientId client);
     bool WriteResourceListToDisk();
     void DeleteResourceListFromDisk();
     bool AppendResource(const std::string& filepath, const std::string& nclFilepath, bool replace);

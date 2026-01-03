@@ -17,7 +17,7 @@ static cell AMX_NATIVE_CALL ncl_sandbox_cvar_begin(AMX* amx, cell* params)
 
     if (!MF_IsPlayerValid(params[arg_index]))
     {
-        LOG(ERROR) << ": invalid player index " << params[arg_index];
+        LOG(ERROR) << "invalid player index " << params[arg_index];
         return FALSE;
     }
 

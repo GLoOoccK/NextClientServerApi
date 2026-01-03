@@ -19,7 +19,7 @@ class ViewmodelFX : public sigslot::observer
     GameEventsManager& game_events_manager_;
 
     int message_viewmodelFX_{};
-    int client_{};
+    ClientId client_{};
     int bit_state_set_{};
     int bit_state_reset_{};
     bool is_message_building_{};
@@ -37,7 +37,7 @@ class ViewmodelFX : public sigslot::observer
 public:
     explicit ViewmodelFX(GameEventsManager& game_events_manager);
 
-    void Begin(int client);
+    void Begin(ClientId client);
     void End();
     void WriteRenderMode(int rendermode);
     void WriteRenderAmt(int renderamt);

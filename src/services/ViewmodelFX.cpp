@@ -140,7 +140,7 @@ bool ViewmodelFX::StateIsSet(VFX state) const
     return (bit_state_set_ & (1 << (int)state));
 }
 
-void ViewmodelFX::Begin(int client)
+void ViewmodelFX::Begin(ClientId client)
 {
     if (is_message_building_)
     {

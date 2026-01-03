@@ -13,7 +13,7 @@
 
 class NextClientApi : public sigslot::observer, public INextClientInfo
 {
-    std::unordered_map<int, PlayerData> players_;
+    std::unordered_map<ClientId, PlayerData> players_;
     int forward_api_ready_{};
 
     GameEventsManager& game_events_manager_;

@@ -146,10 +146,10 @@ void NextClientApi::PlayerPostThinkHandler(ClientId client)
     if (it == players_.end())
         return;
 
-    PlayerData* data = &it->second;
-    if (!data->is_api_ready && data->is_using_nextclient)
+    PlayerData& data = it->second;
+    if (!data.is_api_ready && data.is_using_nextclient)
     {
-        data->is_api_ready = true;
+        data.is_api_ready = true;
 
         MF_ExecuteForward(forward_api_ready_, client);
     }
@@ -158,7 +158,6 @@ void NextClientApi::PlayerPostThinkHandler(ClientId client)
 void NextClientApi::ClientConnectedHandler(ClientId client)
 {
     PlayerData data{};
-
     data.is_api_ready = false;
     data.is_verified = false;
     data.client_version = NextClientVersion{};

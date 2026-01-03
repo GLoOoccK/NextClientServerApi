@@ -25,7 +25,7 @@ static cell AMX_NATIVE_CALL ncl_set_wpn_icon_for_next_deathmsg(AMX* amx, cell* p
 
         if (!MF_IsPlayerValid(params[arg_recipient]))
         {
-            LOG(ERROR) << ": invalid player index " << params[arg_recipient];
+            LOG(ERROR) << "invalid player index " << params[arg_recipient];
             return FALSE;
         }
     }
