@@ -1,3 +1,4 @@
+#include <easylogging++.h>
 #include <elpplog.h>
 #include <kangaru/container.hpp>
 #include <natives/natives.h>
@@ -16,17 +17,18 @@
 
 std::unique_ptr<kgr::container> g_RootContainer;
 
-char g_ModuleVersion[] {MODULE_VERSION};
-cvar_t cvar_nclapi_version = {"nclapi_version", g_ModuleVersion, FCVAR_SERVER | FCVAR_SPONLY};
+char g_ModuleVersion[] { MODULE_VERSION };
+cvar_t cvar_nclapi_version = { "nclapi_version", g_ModuleVersion, FCVAR_SERVER | FCVAR_SPONLY };
 
 void Initialize()
 {
-    ConfigureElppLogger();
-
     if (!RehldsApi_Init())
     {
+        MF_PrintSrvConsole("[" MODULE_LOGTAG "] Failed to initialize ReHLDS API\n");
         return;
     }
+
+    ConfigureElppLogger();
 
     g_RootContainer = std::make_unique<kgr::container>();
     g_RootContainer->emplace<RehldsHookchainsService>(g_RehldsHookchains);
@@ -45,7 +47,7 @@ void Initialize()
 
     AddNatives_All();
 
-    MF_PrintSrvConsole("[%s] Successfully loaded, version %s\n", MODULE_NAME, MODULE_VERSION);
+    LOG(INFO) << MODULE_NAME << " Successfully loaded, version " << MODULE_VERSION;
 }
 
 void Deinitialize()
